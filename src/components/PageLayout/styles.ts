@@ -5,9 +5,10 @@ export const Container = styled.div`
   height: 100vh;
 `;
 
-export const Main = styled.div`
-  max-width: 1400px;
+export const Main = styled.main`
+  max-width: 800px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
+  padding-top: 64px;
 `;
