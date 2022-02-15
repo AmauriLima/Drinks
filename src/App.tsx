@@ -1,7 +1,12 @@
+import { GlobalStyle } from '@styles/global';
+
 import { MyRoutes } from './routes';
 
 export function App() {
   return (
-    <MyRoutes />
+    <>
+      <GlobalStyle />
+      <MyRoutes />
+    </>
   );
 }

@@ -41,6 +41,7 @@
           "module",
           "/^@pages/",
           "/^@components/",
+          "/^@styles/",
           ["parent", "sibling", "index"]
         ],
         "alphabetize": {
