@@ -1,2 +1,2 @@
 export * from './CreateDrink';
-export * from './ListDrinks';
+export * from './Home';
