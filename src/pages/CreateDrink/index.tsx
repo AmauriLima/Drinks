@@ -1,5 +1,9 @@
+import { PageLayout } from '@components/PageLayout';
+
 export function CreateDrink() {
   return (
-    <h1>Crie um novo drink</h1>
+    <PageLayout>
+      <h1>Crie um novo drink</h1>
+    </PageLayout>
   );
 }

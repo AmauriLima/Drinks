@@ -1,5 +1,9 @@
+import { PageLayout } from '@components/PageLayout';
+
 export function ListDrinks() {
   return (
-    <h1>Listagem de drinks</h1>
+    <PageLayout>
+      <h1>Listagem de drinks</h1>
+    </PageLayout>
   );
 }
