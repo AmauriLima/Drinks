@@ -28,10 +28,7 @@ export function useForms<T>() {
   function createInputs(fields: FieldName<T>[], fieldsObject: InputObjectProps<T>) {
     return fields.map((field) => {
       const {
-        label,
-        type,
-        errorMessage = '',
-        validateField = false,
+        label, type, errorMessage = '', validateField = false,
       } = fieldsObject[field];
 
       return (
@@ -40,7 +37,7 @@ export function useForms<T>() {
           <Input
             type={type || 'text'}
             name={field as string}
-            value={values[field] as any}
+            value={values[field] as any ?? ''}
             error={getErrorMessageByFieldName(field)}
             onChange={handleFieldsChange(errorMessage, validateField)}
           />

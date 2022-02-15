@@ -46,7 +46,7 @@ export function Home() {
 
       <DrinksList>
         {filteredDrinks?.map((drink) => (
-          <Card>
+          <Card key={drink.id}>
             <div>
               <AiOutlineClose />
             </div>

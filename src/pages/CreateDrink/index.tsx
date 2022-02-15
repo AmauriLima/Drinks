@@ -1,3 +1,5 @@
+import { FormEvent, FormEventHandler } from 'react';
+
 import { Drink } from '@services/DrinksService/DTO';
 
 import { InputObjectProps } from '@hooks/DTO/useFormsDTO';
@@ -8,7 +10,7 @@ import { PageLayout } from '@components/PageLayout';
 import { Form } from './styles';
 
 export function CreateDrink() {
-  const { createInputs } = useForms<Drink>();
+  const { createInputs, values } = useForms<Drink>();
 
   const fieldsObject = {
     name: {
@@ -23,10 +25,16 @@ export function CreateDrink() {
     },
   } as InputObjectProps<Drink>;
 
+  const onSubmit: FormEventHandler<HTMLFormElement> = (event: FormEvent) => {
+    event.preventDefault();
+    console.log(values);
+  };
+
   return (
     <PageLayout>
-      <Form>
+      <Form onSubmit={onSubmit}>
         {createInputs(['name', 'description'], fieldsObject)}
+        <button type="submit">Salvar</button>
       </Form>
     </PageLayout>
   );
