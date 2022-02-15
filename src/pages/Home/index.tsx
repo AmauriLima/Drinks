@@ -1,9 +1,16 @@
+import { AiOutlineSearch } from 'react-icons/ai';
+
 import { PageLayout } from '@components/PageLayout';
+
+import { InputSearchContainer } from './styles';
 
 export function Home() {
   return (
     <PageLayout>
-      <h1>Listagem de drinks</h1>
+      <InputSearchContainer htmlFor="search">
+        <input name="search" id="search" placeholder="Pesquisar" />
+        <AiOutlineSearch />
+      </InputSearchContainer>
     </PageLayout>
   );
 }
