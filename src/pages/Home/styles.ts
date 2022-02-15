@@ -8,7 +8,7 @@ export const InputSearchContainer = styled.label`
   background: ${({ theme }) => theme.colors.gray[500]};
   border-radius: 4px;
   margin: 0 auto;
-  max-width: 624px;
+  max-width: 524px;
   width: 100%;
   cursor: text;
   border: 2px solid transparent;
@@ -48,8 +48,8 @@ export const DrinksList = styled.div`
 
 export const Card = styled.div`
   border-radius: 4px;
-  min-width: 300px;
-  max-width: 300px;
+  min-width: 250px;
+  max-width: 250px;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.gray[500]};
   padding: 8px;
@@ -58,6 +58,7 @@ export const Card = styled.div`
   img {
     height: 100px;
     object-fit: contain;
+    margin-bottom: 16px;
   }
 
   strong {
@@ -68,7 +69,7 @@ export const Card = styled.div`
     padding: 0 8px;
     margin-top: 8px;
 
-    max-height: 100px;
+    max-height: 108px;
     overflow-y: scroll;
 
     ::-webkit-scrollbar {
