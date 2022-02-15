@@ -1,9 +1,8 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, SerializedError } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
 
 import { Drink } from '@services/DrinksService/DTO';
-import { listDrinks } from '@services/DrinksService/redux';
+import { createDrink, listDrinks } from '@services/DrinksService/redux';
 
 type initialStateProps = {
   drinks: Response | Drink[];
@@ -33,9 +32,20 @@ export const drinkSlice = createSlice({
       state.status = 'failed';
       state.error = action.error;
     });
+    builder.addCase(createDrink.pending, (state) => {
+      state.status = 'loading';
+    });
+    builder.addCase(createDrink.fulfilled, (state: any, action) => {
+      state.status = 'success';
+      state.drinks = action.payload;
+    });
+    builder.addCase(createDrink.rejected, (state, action) => {
+      state.status = 'failed';
+      state.error = action.error;
+    });
   },
 });
 
-export const selectDrinks = useSelector((state: any) => state.drinks);
+export const selectDrinks = (state: any) => state.drinks;
 
 export default drinkSlice.reducer;

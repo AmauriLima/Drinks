@@ -33,6 +33,7 @@
     "react/react-in-jsx-scope": "off",
     "import/no-extraneous-dependencies": "off",
     "react/require-default-props": "off",
+    "class-methods-use-this": "off",
 
     "import-helpers/order-imports": [
       "warn",

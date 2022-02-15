@@ -2,7 +2,7 @@ import {
   ChangeEvent, useEffect, useMemo, useState,
 } from 'react';
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectDrinks } from 'src/redux/slices/drinkSlice';
 
 import { Drink } from '@services/DrinksService/DTO';
@@ -14,14 +14,19 @@ import { Card, DrinksList, InputSearchContainer } from './styles';
 
 export function Home() {
   const dispatch = useDispatch();
-  const drinks: Drink[] = selectDrinks;
+  const drinks: Drink[] = useSelector(selectDrinks);
   const [searchTerm, setSearchTerm] = useState<string>('');
 
-  const filteredDrinks = useMemo(() => drinks?.filter((drink) => (
-    [drink.name.toLowerCase(), drink.description.toLowerCase()]
-      .map((searchItem) => searchItem.includes(searchTerm.toLowerCase()))
-      .includes(true)
-  )), [searchTerm, drinks]);
+  const filteredDrinks = useMemo(() => {
+    if (drinks.length) {
+      return (drinks?.filter((drink) => (
+        [drink.name.toLowerCase(), drink.description.toLowerCase()]
+          .map((searchItem) => searchItem.includes(searchTerm.toLowerCase()))
+          .includes(true)
+      )));
+    }
+    return [];
+  }, [searchTerm, drinks]);
 
   useEffect(() => {
     if (!drinks.length) {

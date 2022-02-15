@@ -1,4 +1,5 @@
 import { HttpClient } from '../utils/HttpClient';
+import { Drink } from './DTO';
 
 class DrinksService {
   private httpClient: HttpClient;
@@ -10,6 +11,16 @@ class DrinksService {
   async listDrinks<T>() {
     const response = await this.httpClient.get<T>('/beers');
     return response;
+  }
+
+  createDrink(prevState: Drink[], { description, name }: Drink) {
+    const drink = {
+      name,
+      description,
+      id: Math.random(),
+    } as Drink;
+
+    return [drink, ...prevState];
   }
 }
 
