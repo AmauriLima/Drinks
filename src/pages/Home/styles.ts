@@ -8,7 +8,7 @@ export const InputSearchContainer = styled.label`
   background: ${({ theme }) => theme.colors.gray[500]};
   border-radius: 4px;
   margin: 0 auto;
-  max-width: 424px;
+  max-width: 624px;
   width: 100%;
   cursor: text;
   border: 2px solid transparent;
@@ -48,16 +48,33 @@ export const DrinksList = styled.div`
 
 export const Card = styled.div`
   border-radius: 4px;
-  min-width: 200px;
-  max-width: 200px;
+  min-width: 300px;
+  max-width: 300px;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.gray[500]};
   padding: 8px;
   text-align: center;
 
+  img {
+    height: 100px;
+    object-fit: contain;
+  }
+
+  strong {
+    display: block;
+  }
+
   p {
+    padding: 0 8px;
     margin-top: 8px;
-    padding-bottom: 32px;
+
+    max-height: 100px;
+    overflow-y: scroll;
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
   }
 
   & > div:first-child {
