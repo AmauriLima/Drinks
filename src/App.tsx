@@ -1,3 +1,7 @@
+import { MyRoutes } from './routes';
+
 export function App() {
-  return <h1>Drinks</h1>;
+  return (
+    <MyRoutes />
+  );
 }
