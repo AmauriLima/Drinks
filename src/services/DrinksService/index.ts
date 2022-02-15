@@ -8,7 +8,8 @@ class DrinksService {
   }
 
   async listDrinks<T>() {
-    return this.httpClient.get<T>('/beers');
+    const response = await this.httpClient.get<T>('/beers');
+    return response;
   }
 }
 

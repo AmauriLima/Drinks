@@ -2,29 +2,31 @@ import {
   ChangeEvent, useEffect, useMemo, useState,
 } from 'react';
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai';
+import { useDispatch } from 'react-redux';
+import { selectDrinks } from 'src/redux/slices/drinkSlice';
 
-import DrinksService from '@services/DrinksService';
 import { Drink } from '@services/DrinksService/DTO';
+import { listDrinks } from '@services/DrinksService/redux';
 
 import { PageLayout } from '@components/PageLayout';
 
 import { Card, DrinksList, InputSearchContainer } from './styles';
 
 export function Home() {
-  const [drinks, setDrinks] = useState<Drink[]>([]);
+  const dispatch = useDispatch();
+  const drinks: Drink[] = selectDrinks;
   const [searchTerm, setSearchTerm] = useState<string>('');
 
-  const filteredDrinks = useMemo(() => drinks.filter((drink) => (
+  const filteredDrinks = useMemo(() => drinks?.filter((drink) => (
     [drink.name.toLowerCase(), drink.description.toLowerCase()]
       .map((searchItem) => searchItem.includes(searchTerm.toLowerCase()))
       .includes(true)
   )), [searchTerm, drinks]);
 
   useEffect(() => {
-    (async () => {
-      const drinkslist = await DrinksService.listDrinks<Drink[]>();
-      setDrinks(drinkslist);
-    })();
+    if (!drinks.length) {
+      dispatch(listDrinks());
+    }
   }, []);
 
   function handleChangeSearchTerm({ target }: ChangeEvent<HTMLInputElement>) {
