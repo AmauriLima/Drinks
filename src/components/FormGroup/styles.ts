@@ -10,5 +10,6 @@ export const Container = styled.div`
     font-size: 12px;
     display: block;
     margin-top: 8px;
+    text-align: right;
   }
 `;

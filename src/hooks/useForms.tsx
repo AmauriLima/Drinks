@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 
 import FormGroup from '@components/FormGroup';
+import { Input } from '@components/Input';
 
 import { FieldName, InputObjectProps } from './DTO/useFormsDTO';
 import { useErrors } from './useErrors';
@@ -36,10 +37,11 @@ export function useForms<T>() {
       return (
         <FormGroup key={field as string} error={getErrorMessageByFieldName(field)}>
           {label && <label htmlFor={field as string}>{label}</label>}
-          <input
+          <Input
             type={type || 'text'}
             name={field as string}
             value={values[field] as any}
+            error={getErrorMessageByFieldName(field)}
             onChange={handleFieldsChange(errorMessage, validateField)}
           />
         </FormGroup>

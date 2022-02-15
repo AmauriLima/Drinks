@@ -5,6 +5,8 @@ import { useForms } from '@hooks/useForms';
 
 import { PageLayout } from '@components/PageLayout';
 
+import { Form } from './styles';
+
 export function CreateDrink() {
   const { createInputs } = useForms<Drink>();
 
@@ -12,20 +14,20 @@ export function CreateDrink() {
     name: {
       label: 'Título',
       validateField: true,
-      errorMessage: 'Título é obrigatório',
+      errorMessage: 'Título é obrigatório!',
     },
     description: {
       label: 'Descrição',
       validateField: true,
-      errorMessage: 'Título é obrigatório',
+      errorMessage: 'Descrição é obrigatória!',
     },
   } as InputObjectProps<Drink>;
 
   return (
     <PageLayout>
-      <form>
+      <Form>
         {createInputs(['name', 'description'], fieldsObject)}
-      </form>
+      </Form>
     </PageLayout>
   );
 }
