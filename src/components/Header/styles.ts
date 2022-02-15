@@ -14,12 +14,14 @@ export const Content = styled.div`
   margin: 0 auto;
 `;
 
-export const FakeLogo = styled.div`
-    height: 32px;
-    width: 32px;
-    background: ${({ theme }) => theme.colors.gray[600]};
-    border-radius: 50%;
-  `;
+export const Logo = styled.div`
+  svg {
+    height: 48px;
+    width: 48px;
+  }
+  padding: 4px;
+  border-radius: 50%;
+`;
 
 export const ControlButtons = styled.div`
   a {

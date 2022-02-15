@@ -2,6 +2,7 @@ import {
   ChangeEvent, useEffect, useMemo, useState,
 } from 'react';
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai';
+import { GiBeerBottle } from 'react-icons/gi';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDrinks } from 'src/redux/slices/drinkSlice';
 
@@ -10,7 +11,9 @@ import { deleteDrink, listDrinks } from '@services/DrinksService/redux';
 
 import { PageLayout } from '@components/PageLayout';
 
-import { Card, DrinksList, InputSearchContainer } from './styles';
+import {
+  Card, DrinksList, ImageContainer, InputSearchContainer,
+} from './styles';
 
 export function Home() {
   const dispatch = useDispatch();
@@ -63,7 +66,14 @@ export function Home() {
             <div onClick={handleDeleteDrink(drink.id)}>
               <AiOutlineClose />
             </div>
-            <img src={drink.image_url} alt="" />
+
+            <ImageContainer>
+              {drink.image_url ? (
+                <img src={drink.image_url} alt="" />
+              ) : (
+                <GiBeerBottle />
+              )}
+            </ImageContainer>
             <strong>{drink.name}</strong>
             <p>{drink.description}</p>
           </Card>

@@ -1,14 +1,17 @@
+import { GiBeerBottle } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 
 import {
-  Container, Content, ControlButtons, FakeLogo,
+  Container, Content, ControlButtons, Logo,
 } from './styles';
 
 export function Header() {
   return (
     <Container>
       <Content>
-        <FakeLogo />
+        <Logo>
+          <GiBeerBottle />
+        </Logo>
 
         <ControlButtons>
           <Link to="/">Listagem</Link>

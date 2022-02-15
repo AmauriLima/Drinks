@@ -55,12 +55,6 @@ export const Card = styled.div`
   padding: 8px;
   text-align: center;
 
-  img {
-    height: 100px;
-    object-fit: contain;
-    margin-bottom: 16px;
-  }
-
   strong {
     display: block;
   }
@@ -87,5 +81,16 @@ export const Card = styled.div`
       width: 1.25rem;
       height: 1.25rem;
     }
+  }
+`;
+
+export const ImageContainer = styled.div`
+  img, svg {
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 16px;
+  }
+  svg {
+    width: 100px;
   }
 `;
