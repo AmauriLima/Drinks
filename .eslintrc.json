@@ -39,9 +39,9 @@
         "newlinesBetween": "always", // new line between groups
         "groups": [
           "module",
+          "/^@assets/",
           "/^@pages/",
           "/^@components/",
-          "/^@styles/",
           ["parent", "sibling", "index"]
         ],
         "alphabetize": {
