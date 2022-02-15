@@ -15,3 +15,11 @@ export const createDrink = createAsyncThunk(
     return response;
   },
 );
+
+export const deleteDrink = createAsyncThunk(
+  'drinks/deleteDrink',
+  ({ prevState, id }: {prevState: Drink[], id: number}): Drink[] => {
+    const response = DrinksService.deleteDrink(prevState, id);
+    return response;
+  },
+);

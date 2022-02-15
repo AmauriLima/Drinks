@@ -83,6 +83,7 @@ export const Card = styled.div`
     justify-content: flex-end;
 
     svg {
+      cursor: pointer;
       width: 1.25rem;
       height: 1.25rem;
     }

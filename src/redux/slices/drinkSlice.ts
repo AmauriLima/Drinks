@@ -2,7 +2,7 @@
 import { createSlice, SerializedError } from '@reduxjs/toolkit';
 
 import { Drink } from '@services/DrinksService/DTO';
-import { createDrink, listDrinks } from '@services/DrinksService/redux';
+import { createDrink, deleteDrink, listDrinks } from '@services/DrinksService/redux';
 
 type initialStateProps = {
   drinks: Response | Drink[];
@@ -40,6 +40,17 @@ export const drinkSlice = createSlice({
       state.drinks = action.payload;
     });
     builder.addCase(createDrink.rejected, (state, action) => {
+      state.status = 'failed';
+      state.error = action.error;
+    });
+    builder.addCase(deleteDrink.pending, (state) => {
+      state.status = 'loading';
+    });
+    builder.addCase(deleteDrink.fulfilled, (state: any, action) => {
+      state.status = 'success';
+      state.drinks = action.payload;
+    });
+    builder.addCase(deleteDrink.rejected, (state, action) => {
       state.status = 'failed';
       state.error = action.error;
     });

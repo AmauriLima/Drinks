@@ -22,6 +22,11 @@ class DrinksService {
 
     return [drink, ...prevState];
   }
+
+  deleteDrink(prevState: Drink[], id: number) {
+    const newListDrink = prevState.filter((drink) => drink.id !== id);
+    return newListDrink;
+  }
 }
 
 export default new DrinksService();

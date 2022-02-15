@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectDrinks } from 'src/redux/slices/drinkSlice';
 
 import { Drink } from '@services/DrinksService/DTO';
-import { listDrinks } from '@services/DrinksService/redux';
+import { deleteDrink, listDrinks } from '@services/DrinksService/redux';
 
 import { PageLayout } from '@components/PageLayout';
 
@@ -38,6 +38,12 @@ export function Home() {
     setSearchTerm(target.value);
   }
 
+  function handleDeleteDrink(id: number) {
+    return () => {
+      dispatch(deleteDrink({ id, prevState: drinks }));
+    };
+  }
+
   return (
     <PageLayout>
       <InputSearchContainer htmlFor="search">
@@ -54,7 +60,7 @@ export function Home() {
       <DrinksList>
         {filteredDrinks?.map((drink) => (
           <Card key={drink.id}>
-            <div>
+            <div onClick={handleDeleteDrink(drink.id)}>
               <AiOutlineClose />
             </div>
             <img src={drink.image_url} alt="" />
