@@ -40,7 +40,7 @@ export function CreateDrink() {
       dispatch(createDrink({ prevState: drinks, drinkData: values }));
       navigate('/');
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

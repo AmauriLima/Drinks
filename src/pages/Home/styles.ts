@@ -44,12 +44,13 @@ export const InputSearchContainer = styled.label`
 export const Container = styled.div`
   width: 100%;
   overflow-y: scroll;
+  padding: 0px 24px 48px;
+  scrollbar-width: 0px;
+
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
-  scrollbar-width: 0px;
-  padding: 0px 24px 48px;
 `;
 
 export const EmptyListContainer = styled.div`
@@ -120,6 +121,7 @@ export const Card = styled.div`
     color: ${({ theme }) => theme.colors.gray[500]};
     max-height: 108px;
     overflow-y: scroll;
+    scrollbar-width: 0px;
 
     ::-webkit-scrollbar {
       width: 6px;
