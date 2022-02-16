@@ -1,4 +1,30 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const appear = keyframes`
+  from {
+    margin-top: -1000px;
+    opacity: 0;
+  }
+
+  80% {
+    margin-top: 10px;
+  }
+
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+`;
+
+const opacity = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
 
 export const Overlay = styled.div`
   background: rgba(255, 255, 255, .4);
@@ -12,6 +38,7 @@ export const Overlay = styled.div`
 
   display: flex;
   align-items: center;
+  animation: ${opacity} ease-in 0.2s;
   justify-content: center;
 `;
 
@@ -21,7 +48,7 @@ export const Container = styled.div`
   background: ${({ theme }) => theme.colors.background};
   border-radius: 4px;
   padding: 24px;
-
+  animation: ${appear} ease-in 0.2s;
   box-shadow: 8px 4px 10px rgba(0, 0, 0, 0.04);
 
   h1 {
