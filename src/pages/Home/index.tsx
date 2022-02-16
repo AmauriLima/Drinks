@@ -12,7 +12,7 @@ import { deleteDrink, listDrinks } from '@services/DrinksService/redux';
 import { PageLayout } from '@components/PageLayout';
 
 import {
-  Card, DrinksList, ImageContainer, InputSearchContainer,
+  Card, Container, DrinksList, ImageContainer, InputSearchContainer,
 } from './styles';
 
 export function Home() {
@@ -60,25 +60,27 @@ export function Home() {
         <AiOutlineSearch />
       </InputSearchContainer>
 
-      <DrinksList>
-        {filteredDrinks?.map((drink) => (
-          <Card key={drink.id}>
-            <div onClick={handleDeleteDrink(drink.id)}>
-              <AiOutlineClose />
-            </div>
+      <Container>
+        <DrinksList>
+          {filteredDrinks?.map((drink) => (
+            <Card key={drink.id}>
+              <div onClick={handleDeleteDrink(drink.id)}>
+                <AiOutlineClose />
+              </div>
 
-            <ImageContainer>
-              {drink.image_url ? (
-                <img src={drink.image_url} alt="" />
-              ) : (
-                <GiBeerBottle />
-              )}
-            </ImageContainer>
-            <strong>{drink.name}</strong>
-            <p>{drink.description}</p>
-          </Card>
-        ))}
-      </DrinksList>
+              <ImageContainer>
+                {drink.image_url ? (
+                  <img src={drink.image_url} alt="" />
+                ) : (
+                  <GiBeerBottle />
+                )}
+              </ImageContainer>
+              <strong>{drink.name}</strong>
+              <p>{drink.description}</p>
+            </Card>
+          ))}
+        </DrinksList>
+      </Container>
     </PageLayout>
   );
 }

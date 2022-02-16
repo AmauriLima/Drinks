@@ -9,9 +9,11 @@ export function Header() {
   return (
     <Container>
       <Content>
-        <Logo>
-          <GiBeerBottle />
-        </Logo>
+        <Link to="/">
+          <Logo>
+            <GiBeerBottle />
+          </Logo>
+        </Link>
 
         <ControlButtons>
           <Link to="/">Listagem</Link>

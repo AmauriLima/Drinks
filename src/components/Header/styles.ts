@@ -2,7 +2,12 @@ import styled from 'styled-components';
 
 export const Container = styled.header`
   padding: 12px 24px;
-  background-color: ${({ theme }) => theme.colors.gray[500]};
+  background-color: ${({ theme }) => theme.colors.gray[1000]};
+  position: sticky;
+  top: 0;
+  width: 100%;
+  max-height: 84px;
+  height: 100%;
 `;
 
 export const Content = styled.div`
@@ -17,6 +22,7 @@ export const Content = styled.div`
 export const Logo = styled.div`
   svg {
     height: 48px;
+    color: ${({ theme }) => theme.colors.primary.main};
     width: 48px;
   }
   padding: 4px;
@@ -26,7 +32,7 @@ export const Logo = styled.div`
 export const ControlButtons = styled.div`
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.colors.gray[800]};
+    color: ${({ theme }) => theme.colors.gray[500]};
   }
 
   a + a {

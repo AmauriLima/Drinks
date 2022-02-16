@@ -5,10 +5,16 @@ declare module 'styled-components' {
     colors: {
       background: string,
       danger: string,
+      primary: {
+        main: string;
+        dark: string;
+      },
       gray: {
+        1000: string,
+        900: string,
         800: string,
-        600: string,
         500: string,
+        300: string,
       },
     }
   }

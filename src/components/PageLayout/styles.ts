@@ -6,8 +6,12 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`
-  max-width: 900px;
   width: 100%;
-  margin: 120px auto;
-  padding: 0 24px 60px;
+  height: calc(100% - 84px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  overflow-y: hidden;
+  padding: 0 20px;
 `;

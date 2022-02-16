@@ -17,6 +17,10 @@ export const Input = styled.input<InputProps>`
   border-radius: 4px;
   transition: 0.2s ease-in;
 
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.primary.dark};
+  }
+
   ${({ theme, error }) => error && css`
     color: ${theme.colors.danger};
     border-color: ${theme.colors.danger} !important;
