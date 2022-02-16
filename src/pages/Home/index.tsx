@@ -1,9 +1,12 @@
 import {
-  ChangeEvent, useEffect, useMemo, useState,
+  ChangeEvent, useMemo, useState,
+  useCallback,
 } from 'react';
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai';
+import { FaDropbox } from 'react-icons/fa';
 import { GiBeerBottle } from 'react-icons/gi';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { selectDrinks } from 'src/redux/slices/drinkSlice';
 
 import { Drink } from '@services/DrinksService/DTO';
@@ -13,7 +16,7 @@ import { Modal } from '@components/Modal';
 import { PageLayout } from '@components/PageLayout';
 
 import {
-  Card, Container, DrinksList, ImageContainer, InputSearchContainer,
+  Card, Container, DrinksList, EmptyListContainer, ImageContainer, InputSearchContainer,
 } from './styles';
 
 export function Home() {
@@ -34,10 +37,8 @@ export function Home() {
     return [];
   }, [searchTerm, drinks]);
 
-  useEffect(() => {
-    if (!drinks.length) {
-      dispatch(listDrinks());
-    }
+  const loadDrinks = useCallback(() => {
+    dispatch(listDrinks());
   }, []);
 
   function handleChangeSearchTerm({ target }: ChangeEvent<HTMLInputElement>) {
@@ -71,6 +72,21 @@ export function Home() {
       </InputSearchContainer>
 
       <Container>
+
+        {(!drinks.length) && (
+          <EmptyListContainer>
+            <button type="button" onClick={loadDrinks}>Recarregar Bebidas!</button>
+            <FaDropbox />
+            <p>
+              Parece que você ainda não tem cadastrou ou deletou todas as suas bebidas!
+              <br />
+              Clique no botão <strong>”Recarregar Bebidas”</strong> à cima
+              para recarregar todas as bebidas!
+              <br />
+              Ou cadastre novas na página de cadastros ou <Link to="/createDrink">Clicando Aqui!</Link>
+            </p>
+          </EmptyListContainer>
+        )}
         <DrinksList>
           {filteredDrinks?.map((drink) => (
             <Card key={drink.id}>

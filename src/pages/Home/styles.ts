@@ -52,6 +52,44 @@ export const Container = styled.div`
   padding: 0px 24px 48px;
 `;
 
+export const EmptyListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  svg {
+    width: 100px;
+    height: 100px;
+    color: ${({ theme }) => theme.colors.primary.main};
+    margin-top: 16px;
+  }
+
+  p {
+    text-align: center;
+    color: ${({ theme }) => theme.colors.gray[300]};
+    margin-top: 8px;
+
+    strong, a {
+      color: ${({ theme }) => theme.colors.primary.main};
+      font-weight: bold;
+    }
+  }
+
+  button {
+    margin-top: 16px;
+    height: 48px;
+    border: 0;
+    outline: 0;
+    border-radius: 4px;
+    max-width: 180px;
+    width: 100%;
+    font-size: 1rem;
+    background-color: ${({ theme }) => theme.colors.primary.dark};
+    color: ${({ theme }) => theme.colors.gray[500]};
+    transition: 0.2s ease-in;
+  }
+`;
+
 export const DrinksList = styled.div`
   display: flex;
   max-width: 900px;
