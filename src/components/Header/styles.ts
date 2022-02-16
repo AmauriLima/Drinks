@@ -33,6 +33,11 @@ export const ControlButtons = styled.div`
   a {
     text-decoration: none;
     color: ${({ theme }) => theme.colors.gray[500]};
+    transition: 0.2s ease-in;
+
+    :hover {
+      filter: brightness(.8);
+    }
   }
 
   a + a {

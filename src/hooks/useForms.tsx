@@ -37,6 +37,7 @@ export function useForms<T>() {
           <Input
             type={type || 'text'}
             name={field as string}
+            id={field as string}
             value={values[field] as any ?? ''}
             error={getErrorMessageByFieldName(field)}
             onChange={handleFieldsChange(errorMessage, validateField)}

@@ -18,6 +18,7 @@ export function CreateDrink() {
   const navigate = useNavigate();
   const { createInputs, values, errors } = useForms<Drink>();
   const drinks = useSelector(selectDrinks);
+
   const fieldsObject = {
     name: {
       label: 'Título',
@@ -32,6 +33,7 @@ export function CreateDrink() {
   } as InputObjectProps<Drink>;
 
   const isFormValid = errors.length === 0 && values.name && values.description;
+
   const onSubmit: FormEventHandler<HTMLFormElement> = (event: FormEvent) => {
     event.preventDefault();
     try {
