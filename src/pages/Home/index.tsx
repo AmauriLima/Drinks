@@ -9,6 +9,7 @@ import { selectDrinks } from 'src/redux/slices/drinkSlice';
 import { Drink } from '@services/DrinksService/DTO';
 import { deleteDrink, listDrinks } from '@services/DrinksService/redux';
 
+import { Modal } from '@components/Modal';
 import { PageLayout } from '@components/PageLayout';
 
 import {
@@ -19,6 +20,8 @@ export function Home() {
   const dispatch = useDispatch();
   const drinks: Drink[] = useSelector(selectDrinks);
   const [searchTerm, setSearchTerm] = useState<string>('');
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [itemOnModal, setItemOnModal] = useState<Drink>();
 
   const filteredDrinks = useMemo(() => {
     if (drinks.length) {
@@ -39,6 +42,13 @@ export function Home() {
 
   function handleChangeSearchTerm({ target }: ChangeEvent<HTMLInputElement>) {
     setSearchTerm(target.value);
+  }
+
+  function handleClickToDeleteDrink(drink: Drink) {
+    return () => {
+      setItemOnModal(drink);
+      setIsModalOpen(true);
+    };
   }
 
   function handleDeleteDrink(id: number) {
@@ -64,7 +74,7 @@ export function Home() {
         <DrinksList>
           {filteredDrinks?.map((drink) => (
             <Card key={drink.id}>
-              <div onClick={handleDeleteDrink(drink.id)}>
+              <div onClick={handleClickToDeleteDrink(drink)}>
                 <AiOutlineClose />
               </div>
 
@@ -81,6 +91,15 @@ export function Home() {
           ))}
         </DrinksList>
       </Container>
+
+      {isModalOpen && (
+        <Modal
+          title={`Deseja excluir a bebida "${itemOnModal?.name}"?`}
+          body="Essa ação não podera ser desfeita!"
+          onClick={handleDeleteDrink(itemOnModal?.id as number)}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </PageLayout>
   );
 }
