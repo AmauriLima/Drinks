@@ -36,6 +36,10 @@ export const Form = styled.form`
     color: ${({ theme }) => theme.colors.gray[500]};
     transition: 0.2s ease-in;
 
+    :disabled {
+    background-color: ${({ theme }) => theme.colors.gray[800]};
+    }
+
     @media (max-width: 424px) {
       max-width: 100%;
       margin-top: 32px;

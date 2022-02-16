@@ -41,7 +41,13 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   button {
-    cursor: pointer;
+    :not(:disabled) {
+      cursor: pointer;
+    }
+
+    :hover:not(:disabled) {
+      filter: brightness(0.8);
+    }
   }
 
   ul li {

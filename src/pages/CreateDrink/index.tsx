@@ -16,7 +16,7 @@ import { Form } from './styles';
 export function CreateDrink() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { createInputs, values } = useForms<Drink>();
+  const { createInputs, values, errors } = useForms<Drink>();
   const drinks = useSelector(selectDrinks);
   const fieldsObject = {
     name: {
@@ -31,6 +31,7 @@ export function CreateDrink() {
     },
   } as InputObjectProps<Drink>;
 
+  const isFormValid = errors.length === 0 && values.name && values.description;
   const onSubmit: FormEventHandler<HTMLFormElement> = (event: FormEvent) => {
     event.preventDefault();
     try {
@@ -45,7 +46,7 @@ export function CreateDrink() {
     <PageLayout>
       <Form onSubmit={onSubmit}>
         {createInputs(['name', 'description'], fieldsObject)}
-        <button type="submit">Salvar</button>
+        <button disabled={!isFormValid} type="submit">Salvar</button>
       </Form>
     </PageLayout>
   );

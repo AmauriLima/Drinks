@@ -9,7 +9,7 @@ import { useErrors } from './useErrors';
 export function useForms<T>() {
   const [values, setValues] = useState<T>({} as T);
 
-  const { getErrorMessageByFieldName, handleRequiredFieldChange } = useErrors<T>();
+  const { getErrorMessageByFieldName, handleRequiredFieldChange, errors } = useErrors<T>();
 
   function handleFieldsChange(errorMessage: string, validateField: boolean) {
     return (event: ChangeEvent<HTMLInputElement>) => {
@@ -48,6 +48,7 @@ export function useForms<T>() {
 
   return {
     values,
+    errors,
     handleFieldsChange,
     createInputs,
   };
